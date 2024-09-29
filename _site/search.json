@@ -67,7 +67,7 @@
     "href": "posts/welcome/index.html#data-description",
     "title": "People Are Living Longer Than Ever",
     "section": "Data Description",
-    "text": "Data Description\nTo get a clearer picture, I used data from Our World in Data, which tracks life expectancy worldwide. The dataset includes information about how long people have been living in different countries over time. The data is described in the table below.\n\n\n\nData Dictionary\n\n\nVariable\nDescription\n\n\n\n\nEntity\nCountry or region entity\n\n\nCode\nEntity code\n\n\nYear\nYear\n\n\nLifeExpectancy\nPeriod life expectancy at birth - Sex: all - Age: 0\n\n\nLifeExpectancyDiffFM\nLifeExpectancyDiffFM: The difference in life expectancy between men and women (measured in years)."
+    "text": "Data Description\nTo get a clearer picture, I used data from TidyTuesday’s repository (2023-12-05). The dataset contains life expectancy information across different countries and time periods, sourced from “Our World in Data.”. This dataset provides information on life expectancy trends across various countries and regions over time. It includes key variables such as average life expectancy at birth and the gender gap in life expectancy, showing how long people are expected to live and how these patterns differ between men and women. The data is described in the table below.\n\n\n\nData Dictionary\n\n\nVariable\nDescription\n\n\n\n\nEntity\nCountry or region entity\n\n\nCode\nEntity code\n\n\nYear\nYear\n\n\nLifeExpectancy\nPeriod life expectancy at birth - Sex: all - Age: 0\n\n\nLifeExpectancyDiffFM\nLifeExpectancyDiffFM: The difference in life expectancy between men and women (measured in years)."
   },
   {
     "objectID": "posts/welcome/index.html#data-cleaning-steps",
