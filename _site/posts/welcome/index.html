@@ -189,15 +189,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="problem-description" class="level2">
 <h2 class="anchored" data-anchor-id="problem-description">Problem Description</h2>
-<p>Have you ever wondered why people today are living so much longer than our ancestors? Just a hundred years ago, the average person only lived to about 40 years old, but now it’s over 70! This blog explores the fascinating reasons behind this dramatic rise in life expectancy. We’ll also look at how men and women are experiencing this trend differently and how various regions of the world compare. ## Introduction</p>
+<p>Why are people living so much longer now? A hundred years ago, the average lifespan was 40 years, and now it’s over 70. This blog explores the reasons behind this rise. We’ll also look at how men and women are experiencing this trend differently and how various regions of the world compare.</p>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Life expectancy is a crucial issue in assessing global development and health. Over the past century, factors such as advancements in medical care, improvements in public health, and reductions in conflict have significantly impacted life expectancy. Understanding these changes can aid in adapting future policies and improving living conditions. This report will analyze changes in life expectancy over the past hundred years, differences between genders, and variations in life expectancy across different continents.</p>
 </section>
 <section id="data-description" class="level2">
 <h2 class="anchored" data-anchor-id="data-description">Data Description</h2>
-<p>To get a clearer picture, I used data from <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-12-05/readme.md">TidyTuesday’s repository (2023-12-05)</a>. The dataset contains life expectancy information across different countries and time periods, sourced from “Our World in Data.”. This dataset provides information on life expectancy trends across various countries and regions over time. It includes key variables such as average life expectancy at birth and the gender gap in life expectancy, showing how long people are expected to live and how these patterns differ between men and women. The data is described in the table below.</p>
+<p>To get a clearer picture, I used data from <a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-12-05/readme.md">TidyTuesday’s repository (2023-12-05)</a>. The dataset contains life expectancy information across different countries and time periods, sourced from “Our World in Data.”. This dataset provides information on life expectancy trends across various countries and regions over time. It includes key variables such as average life expectancy at birth and the gender gap in life expectancy, showing how long people are expected to live and how these patterns differ between men and women. The data is described in the <a href="#tbl-varibledescription" class="quarto-xref">Table&nbsp;1</a> below.</p>
 <div class="cell">
+<div id="tbl-varibledescription" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-varibledescription-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Varible Description
+</figcaption>
+<div aria-describedby="tbl-varibledescription-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
+<table class="table do-not-create-environment cell caption-top table-sm table-striped small" data-quarto-postprocess="true">
 <caption>Data Dictionary</caption>
 <thead>
 <tr class="header">
@@ -232,6 +241,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 </div>
+</figure>
+</div>
+</div>
 </section>
 <section id="data-cleaning-steps" class="level2">
 <h2 class="anchored" data-anchor-id="data-cleaning-steps">Data Cleaning Steps:</h2>
@@ -252,56 +264,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="life-expectancy-has-skyrocketed-in-the-last-century" class="level3">
 <h3 class="anchored" data-anchor-id="life-expectancy-has-skyrocketed-in-the-last-century">1. Life Expectancy Has Skyrocketed in the Last Century</h3>
-<p>Take a look at Figure 1. It shows how life expectancy has shot up from about 40 years in 1900 to over 70 years in 2021. This massive improvement is mostly thanks to better healthcare, higher living standards, and fewer wars. Sure, there were some dips—like during World War II—but overall, the trend has been upward. It’s amazing to see how far we’ve come in just a hundred years!</p>
-<div class="cell" data-layout-align="center">
+<p>Take a look at <a href="#fig-worldexpectancy" class="quarto-xref">Figure&nbsp;1</a>. It shows how life expectancy has shot up from about 40 years in 1900 to over 70 years in 2021. This massive improvement is mostly thanks to better healthcare, higher living standards, and fewer wars. Sure, there were some dips—like during World War II—but overall, the trend has been upward. It’s amazing to see how far we’ve come in just a hundred years!</p>
+<div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
+<div id="fig-worldexpectancy" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-worldexpectancy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-worldexpectancy-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-worldexpectancy-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: World Average Life Expectancy Over Time
+</figcaption>
 </figure>
 </div>
 </div>
-</div>
-<div data-align="center">
-<strong>Figure 1:</strong> Global Average Life Expectancy Over the Past Century
 </div>
 </section>
 <section id="women-outlive-men" class="level3">
 <h3 class="anchored" data-anchor-id="women-outlive-men">2. Women Outlive Men</h3>
-<p>It’s no secret that women tend to live longer than men. Figure 2 highlights the difference in life expectancy between the sexes over the last 70 years. Starting from the 1950s, women began to outlive men by a noticeable margin, and the gap peaked in the 1970s. Why? Well, it turns out men tend to take more risks—smoking, drinking, and dangerous jobs—all of which have higher health risks. Women, on the other hand, tend to engage in fewer risky behaviors and have better access to healthcare, which contributes to their longer lives (JAMA Network, 2024).</p>
-<div class="cell" data-layout-align="center">
+<p>It’s no secret that women tend to live longer than men. <a href="#fig-sexdiff" class="quarto-xref">Figure&nbsp;2</a> highlights the difference in life expectancy between the sexes over the last 70 years. Starting from the 1950s, women began to outlive men by a noticeable margin, and the gap peaked in the 1970s. Why? Well, it turns out men tend to take more risks—smoking, drinking, and dangerous jobs—all of which have higher health risks. Women, on the other hand, tend to engage in fewer risky behaviors and have better access to healthcare, which contributes to their longer lives (JAMA Network, 2024).</p>
+<div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480"></p>
+<div id="fig-sexdiff" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-sexdiff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-sexdiff-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-sexdiff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Average Life Expectancy Difference Between Sexes
+</figcaption>
 </figure>
 </div>
 </div>
-</div>
-<div data-align="center">
-<strong>Figure 2:</strong> Life Expectancy Difference Between Sexes
 </div>
 </section>
 <section id="big-differences-between-continents-in-2021" class="level3">
 <h3 class="anchored" data-anchor-id="big-differences-between-continents-in-2021">3. Big Differences Between Continents in 2021</h3>
-<p>Even though global life expectancy has risen overall, there are still some huge differences between regions. As you can see in Figure 3, Africa has the lowest life expectancy, mainly because of healthcare challenges and high disease rates. Meanwhile, Europe leads the pack with the highest life expectancy, thanks to excellent healthcare and social services. North America also fares well, though the U.S. drags down the average a bit due to healthcare disparities. South America and Asia show steady progress but still have some gaps compared to other continents.</p>
-<div class="cell" data-layout-align="center">
+<p>Even though global life expectancy has risen overall, there are still some huge differences between regions. As you can see in <a href="#fig-lifeexpectancy2021" class="quarto-xref">Figure&nbsp;3</a> , Africa has the lowest life expectancy, mainly because of healthcare challenges and high disease rates. Meanwhile, Europe leads the pack with the highest life expectancy, thanks to excellent healthcare and social services. North America also fares well, though the U.S. drags down the average a bit due to healthcare disparities. South America and Asia show steady progress but still have some gaps compared to other continents.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+<div id="fig-lifeexpectancy2021" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-lifeexpectancy2021-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-lifeexpectancy2021-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-lifeexpectancy2021-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: World’s Life Expectancy in 2021
+</figcaption>
 </figure>
 </div>
 </div>
-</div>
-<div data-align="center">
-<strong>Figure 3:</strong> World’s Life Expectancy in 2021
 </div>
 </section>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Life expectancy has come a long way over the last century, with better healthcare and living conditions allowing people to live longer than ever. But there’s still work to do, especially in regions like Africa, where access to healthcare remains a challenge. It’s crucial that future efforts focus on closing these gaps so everyone can benefit equally.</p>
+<p>Life expectancy has increased thanks to better healthcare and living conditions. However, regions like Africa still face challenges with healthcare access. It’s crucial that future efforts focus on closing these gaps so everyone can benefit equally.</p>
 <p>The gap between men and women is also worth noting—women generally outlive men due to a mix of biology and lifestyle. As we move forward, addressing these disparities will be key to ensuring healthier, longer lives for all.</p>
 </section>
 <section id="reference" class="level2">

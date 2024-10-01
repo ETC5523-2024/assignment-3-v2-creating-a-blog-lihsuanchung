@@ -9,7 +9,8 @@ categories: [blog]
 
 ## Problem Description
 
-Have you ever wondered why people today are living so much longer than our ancestors? Just a hundred years ago, the average person only lived to about 40 years old, but now it's over 70! This blog explores the fascinating reasons behind this dramatic rise in life expectancy. We'll also look at how men and women are experiencing this trend differently and how various regions of the world compare.
+Why are people living so much longer now? A hundred years ago, the average lifespan was 40 years, and now it's over 70. This blog explores the reasons behind this rise. We'll also look at how men and women are experiencing this trend differently and how various regions of the world compare.
+
 ## Introduction
 
 Life expectancy is a crucial issue in assessing global development and health. Over the past century, factors such as advancements in medical care, improvements in public health, and reductions in conflict have significantly impacted life expectancy. Understanding these changes can aid in adapting future policies and improving living conditions. This report will analyze changes in life expectancy over the past hundred years, differences between genders, and variations in life expectancy across different continents.
@@ -17,10 +18,14 @@ Life expectancy is a crucial issue in assessing global development and health. O
 ## Data Description
 
 
+To get a clearer picture, I used data from [TidyTuesday’s repository (2023-12-05)](https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-12-05/readme.md). The dataset contains life expectancy information across different countries and time periods, sourced from "Our World in Data.". This dataset provides information on life expectancy trends across various countries and regions over time. It includes key variables such as average life expectancy at birth and the gender gap in life expectancy, showing how long people are expected to live and how these patterns differ between men and women. The data is described in the @tbl-varibledescription below. 
 
-To get a clearer picture, I used data from [TidyTuesday’s repository (2023-12-05)](https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-12-05/readme.md). The dataset contains life expectancy information across different countries and time periods, sourced from "Our World in Data.". This dataset provides information on life expectancy trends across various countries and regions over time. It includes key variables such as average life expectancy at birth and the gender gap in life expectancy, showing how long people are expected to live and how these patterns differ between men and women. The data is described in the table below.
+
+
 
 ```{r,echo=FALSE, warning=FALSE, message=FALSE}
+#| label: tbl-varibledescription
+#| tbl-cap: "Varible Description"
 
 library(knitr)
 library(kableExtra)
@@ -39,6 +44,7 @@ kable(data_dictionary, col.names = c("Variable", "Description"),
       kable_styling(full_width = F) %>%
       column_spec(2, width = "20em") 
 ```
+
 
 ## Data Cleaning Steps:
 
@@ -63,39 +69,46 @@ colnames(life_expectancy_female_male)[4] <- "LifeExpectancyDiffFM"
 ### 1. Life Expectancy Has Skyrocketed in the Last Century
 
 
-Take a look at Figure 1. It shows how life expectancy has shot up from about 40 years in 1900 to over 70 years in 2021. This massive improvement is mostly thanks to better healthcare, higher living standards, and fewer wars. Sure, there were some dips—like during World War II—but overall, the trend has been upward. It’s amazing to see how far we’ve come in just a hundred years!
+Take a look at @fig-worldexpectancy. It shows how life expectancy has shot up from about 40 years in 1900 to over 70 years in 2021. This massive improvement is mostly thanks to better healthcare, higher living standards, and fewer wars. Sure, there were some dips—like during World War II—but overall, the trend has been upward. It’s amazing to see how far we’ve come in just a hundred years!
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center',fig.width=5, fig.height=3}
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+#| label: fig-worldexpectancy
+#| fig-cap: "World Average Life Expectancy Over Time"
+
+
 library(ggplot2)
 library(dplyr)
 
+
 world_life_expectancy <- life_expectancy %>%
-  filter(Entity == "World", Year > 1900)
+  filter(Entity == "World")
 
 ggplot(world_life_expectancy, aes(x = Year, y = LifeExpectancy)) +
   geom_line(color = "steelblue", size = 1.2) +   
-  labs(title = "World Average Life Expectancy ",
-       x = "Year",
-       y = "Life Expectancy (Years)") +
-  theme_light(base_size = 15) + 
+  labs(x = "Year", y = "Life Expectancy (Years)") +
+  theme_light(base_size = 15) +
   theme(
-    plot.title = element_text(face = "bold", hjust = 0.5, size = 18),  
-    axis.text = element_text(size = 12),   
-    axis.title = element_text(size = 14),  
-    plot.margin = unit(c(0.5, 0.5, 0.1, 0.5), "cm")  
+    plot.title = element_text(face = "bold", hjust = 0.5, size = 18),
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 14),
+    plot.margin = unit(c(0.5, 0.5, 0.1, 0.5), "cm")
   )
-
-
-
 ```
-<div align="center">**Figure 1:** Global Average Life Expectancy Over the Past Century</div> 
+
+
+
+
 
 
 ### 2. Women Outlive Men
 
-It's no secret that women tend to live longer than men. Figure 2 highlights the difference in life expectancy between the sexes over the last 70 years. Starting from the 1950s, women began to outlive men by a noticeable margin, and the gap peaked in the 1970s. Why? Well, it turns out men tend to take more risks—smoking, drinking, and dangerous jobs—all of which have higher health risks. Women, on the other hand, tend to engage in fewer risky behaviors and have better access to healthcare, which contributes to their longer lives (JAMA Network, 2024).
+It's no secret that women tend to live longer than men. @fig-sexdiff highlights the difference in life expectancy between the sexes over the last 70 years. Starting from the 1950s, women began to outlive men by a noticeable margin, and the gap peaked in the 1970s. Why? Well, it turns out men tend to take more risks—smoking, drinking, and dangerous jobs—all of which have higher health risks. Women, on the other hand, tend to engage in fewer risky behaviors and have better access to healthcare, which contributes to their longer lives (JAMA Network, 2024).
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center',fig.width=5, fig.height=3}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+#| label: fig-sexdiff
+#| fig-cap: "Average Life Expectancy Difference Between Sexes"
+
 library(ggplot2)
 library(dplyr)
 
@@ -119,13 +132,16 @@ ggplot(fil_sex, aes(x = Year, y = LifeExpectancyDiffFM)) +
 
 
 ```
-<div align="center">**Figure 2:**  Life Expectancy Difference Between Sexes </div> 
+
 
 ### 3. Big Differences Between Continents in 2021
 
-Even though global life expectancy has risen overall, there are still some huge differences between regions. As you can see in Figure 3, Africa has the lowest life expectancy, mainly because of healthcare challenges and high disease rates. Meanwhile, Europe leads the pack with the highest life expectancy, thanks to excellent healthcare and social services. North America also fares well, though the U.S. drags down the average a bit due to healthcare disparities. South America and Asia show steady progress but still have some gaps compared to other continents.
+Even though global life expectancy has risen overall, there are still some huge differences between regions. As you can see in @fig-lifeexpectancy2021 , Africa has the lowest life expectancy, mainly because of healthcare challenges and high disease rates. Meanwhile, Europe leads the pack with the highest life expectancy, thanks to excellent healthcare and social services. North America also fares well, though the U.S. drags down the average a bit due to healthcare disparities. South America and Asia show steady progress but still have some gaps compared to other continents.
 
-```{r, echo=FALSE, warning=FALSE, message=FALSE, fig.align='center',fig.width=6, fig.height=4}
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+#| label: fig-lifeexpectancy2021
+#| fig-cap: "World's Life Expectancy in 2021"
+
 library(rworldmap)
 
 life_expectancy_data <- life_expectancy %>%
@@ -146,11 +162,11 @@ invisible(capture.output({
                               missingCountryCol = "white")
 }))
 ```
-<div align="center">**Figure 3:**  World's Life Expectancy in 2021</div> 
+
 
 ## Conclusion
 
-Life expectancy has come a long way over the last century, with better healthcare and living conditions allowing people to live longer than ever. But there’s still work to do, especially in regions like Africa, where access to healthcare remains a challenge. It’s crucial that future efforts focus on closing these gaps so everyone can benefit equally.
+Life expectancy has increased thanks to better healthcare and living conditions. However, regions like Africa still face challenges with healthcare access. It’s crucial that future efforts focus on closing these gaps so everyone can benefit equally.
 
 The gap between men and women is also worth noting—women generally outlive men due to a mix of biology and lifestyle. As we move forward, addressing these disparities will be key to ensuring healthier, longer lives for all.
 
