@@ -5,7 +5,7 @@ date: "2024-09-29"
 categories: [blog]
 ---
 
-
+![](thumbnail.jpg)
 
 ## Problem Description
 
